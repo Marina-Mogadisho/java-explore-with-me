@@ -30,11 +30,6 @@
             <artifactId>lombok</artifactId>
             <optional>true</optional>
         </dependency>
-        <dependency>
-            <groupId>ch.qos.logback</groupId>
-            <artifactId>logback-classic</artifactId>
-            <version>1.4.11</version>
-        </dependency>
     </dependencies>
 
     <build>
@@ -58,4 +53,5 @@
             </plugins>
         </pluginManagement>
     </build>
+
 </project>
