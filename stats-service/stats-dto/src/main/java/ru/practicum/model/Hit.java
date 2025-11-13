@@ -52,6 +52,10 @@ public class Hit {
     @Column(name = "created")
     private LocalDateTime timestamp;
 
+    public Long getId() {
+        return this.id;
+    }
+
     @Override
     public final boolean equals(Object o) {
         if (this == o) return true;
@@ -73,5 +77,6 @@ public class Hit {
                 .getPersistentClass().hashCode()
                 : getClass().hashCode();
     }
+
 }
 
