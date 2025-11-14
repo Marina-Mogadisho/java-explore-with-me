@@ -25,6 +25,7 @@
         <java.version>21</java.version>
         <maven.compiler.source>21</maven.compiler.source>
         <maven.compiler.target>21</maven.compiler.target>
+        <maven-clean-plugin.version>3.4.0</maven-clean-plugin.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <org.apache.maven.plugins>3.1.2</org.apache.maven.plugins>
         <com.puppycrawl.tools>10.3</com.puppycrawl.tools>
@@ -36,11 +37,26 @@
         <com.fasterxml.jackson.core.jackson-databind.version>2.17.2
         </com.fasterxml.jackson.core.jackson-databind.version>
         <com.querydsl.version>5.1.0</com.querydsl.version>
+        <org.springframework.boot>4.0.0-RC2</org.springframework.boot>
     </properties>
-
 
     <dependencyManagement>
         <dependencies>
+            <dependency>
+                <groupId>ru.practicum</groupId>
+                <artifactId>stats-dto</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>ru.practicum</groupId>
+                <artifactId>stats-client</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>ru.practicum</groupId>
+                <artifactId>stats-server</artifactId>
+                <version>${project.version}</version>
+            </dependency>
             <dependency>
                 <groupId>org.mapstruct</groupId>
                 <artifactId>mapstruct</artifactId>
@@ -212,6 +228,19 @@
                             <phase>install</phase>
                             <goals>
                                 <goal>report</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+                <plugin>
+                    <artifactId>maven-clean-plugin</artifactId>
+                    <version>${maven-clean-plugin.version}</version>
+                    <executions>
+                        <execution>
+                            <id>default-clean</id>
+                            <phase>clean</phase>
+                            <goals>
+                                <goal>clean</goal>
                             </goals>
                         </execution>
                     </executions>
