@@ -51,7 +51,8 @@ public class EventServiceImpl implements EventService {
     @Override
     public List<EventShortDto> getEventsByFilters(String text, List<Long> categoryIds, Boolean paid,
                                                   LocalDateTime rangeStart, LocalDateTime rangeEnd,
-                                                  Boolean onlyAvailable, EventSortTypes sortType, int from, int size) {
+                                                  Boolean onlyAvailable, EventSortTypes sortType,
+                                                  Integer from, Integer size) {
         validateRangeDates(rangeStart, rangeEnd);
         List<Event> elist = eventRepository.getEventsByFilters(text, categoryIds, paid, rangeStart,
                 rangeEnd, onlyAvailable, sortType, from, size);
@@ -81,9 +82,8 @@ public class EventServiceImpl implements EventService {
         }
         return mapper.toEventFullDto(event);
     }
-
     @Override
-    public List<EventShortDto> getUserEvents(Long userId, int from, int size) {
+    public List<EventShortDto> getUserEvents(Long userId, Integer from, Integer size) {
         if (userRepository.existsById(userId)) {
             return mapper.toEventShortDtoList(eventRepository.findByInitiatorIdOrderByIdAsc(userId, from, size));
         } else {

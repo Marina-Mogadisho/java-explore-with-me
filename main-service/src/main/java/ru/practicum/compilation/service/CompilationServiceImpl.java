@@ -25,7 +25,7 @@ public class CompilationServiceImpl implements CompilationService {
     private final CompilationMapper mapper;
 
     @Override
-    public List<CompilationDto> getCompilations(Boolean pinned, int from, int size) {
+    public List<CompilationDto> getCompilations(Boolean pinned, Integer from, Integer size) {
         if (pinned == null) {
             return mapper.toCompilationDto(compilationRepository.findByOrderByIdAsc(from, size));
         } else {
@@ -75,10 +75,9 @@ public class CompilationServiceImpl implements CompilationService {
 
     private void populateEvents(Set<Event> events, Set<Long> ids) {
         events.clear();
-        if (ids != null) {
-            for (Long eventId : ids) {
-                events.add(eventRepository.getExistingEvent(eventId));
-            }
+        if (ids != null && !ids.isEmpty()) {
+            List<Event> foundEvents = eventRepository.findAllById(ids); // единый запрос к БД
+            events.addAll(foundEvents);
         }
     }
 }

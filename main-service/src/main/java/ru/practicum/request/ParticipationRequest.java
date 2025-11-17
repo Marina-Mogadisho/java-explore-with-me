@@ -17,7 +17,7 @@ import java.util.Objects;
 @NoArgsConstructor
 @Entity
 @Table(name = "participation_requests")
-public class ParticipationRequest {
+public class ParticipationRequest {  //Запрос на участие
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

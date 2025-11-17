@@ -12,7 +12,7 @@ public interface EventService {
 
     List<EventShortDto> getEventsByFilters(String text, List<Long> categoryIds, Boolean paid, LocalDateTime rangeStart,
                                            LocalDateTime rangeEnd, Boolean onlyAvailable, EventSortTypes sortType,
-                                           int from, int size);
+                                           Integer from, Integer size);
 
     List<EventFullDto> getAdminEventsByFilters(List<Long> users, List<EventStates> states, List<Long> categories,
                                                LocalDateTime rangeStart, LocalDateTime rangeEnd, int from, int size);
@@ -23,7 +23,7 @@ public interface EventService {
 
     EventFullDto createEvent(Long userId, NewEventDto newEventDto);
 
-    List<EventShortDto> getUserEvents(Long userId, int from, int size);
+    List<EventShortDto> getUserEvents(Long userId, Integer from, Integer Integer);
 
     EventFullDto getUserEventById(Long userId, Long eventId);
 

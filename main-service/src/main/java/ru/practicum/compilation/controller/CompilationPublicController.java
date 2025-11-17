@@ -15,16 +15,23 @@ import java.util.List;
 @RestController
 @RequestMapping("/compilations")
 @RequiredArgsConstructor
-public class CompilationPublicController {
+public class CompilationPublicController { // Публичная подборка
 
     private final CompilationService service;
     private final StatsLogger statsLogger;
 
+    /**
+     * @param pinned -искать только закрепленные/не закрепленные подборки
+     * @param from - количество элементов, которые нужно пропустить для формирования текущего набора
+     * @param size - количество элементов в наборе
+     * @param request - запрос
+     * @return - список подборок в соответствии с условиями
+     */
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
     public List<CompilationDto> getCompilations(@RequestParam(name = "pinned", required = false) Boolean pinned,
-                                                @RequestParam(name = "from", defaultValue = "0") int from,
-                                                @RequestParam(name = "size", defaultValue = "10") int size,
+                                                @RequestParam(name = "from", defaultValue = "0") Integer from,
+                                                @RequestParam(name = "size", defaultValue = "10") Integer size,
                                                 HttpServletRequest request) {
         log.info("GET compilations pinned={}, from={}, size={}", pinned, from, size);
         statsLogger.logIPAndPath(request);

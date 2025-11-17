@@ -32,8 +32,8 @@ public class UserAdminController {
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
     public List<UserDto> getUsers(@RequestParam(name = "ids", defaultValue = "") List<Long> ids,
-                                  @RequestParam(name = "from", defaultValue = "0") int from,
-                                  @RequestParam(name = "size", defaultValue = "10") int size,
+                                  @RequestParam(name = "from", defaultValue = "0") Integer from,
+                                  @RequestParam(name = "size", defaultValue = "10") Integer size,
                                   HttpServletRequest request) {
         log.info("GET users ids={}, from={}, size={}", ids, from, size);
         statsLogger.logIPAndPath(request);

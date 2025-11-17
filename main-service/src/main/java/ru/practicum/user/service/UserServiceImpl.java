@@ -39,12 +39,12 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public List<UserDto> getUsers(int from, int size) {
+    public List<UserDto> getUsers(Integer from, Integer size) {
         return userMapper.toDtoList(userRepository.findUsers(from, size));
     }
 
     @Override
-    public List<UserDto> getUsersByIds(List<Long> ids, int from, int size) {
+    public List<UserDto> getUsersByIds(List<Long> ids, Integer from, Integer size) {
         return userMapper.toDtoList(userRepository.findAllByIds(ids, from, size));
     }
 }

@@ -37,8 +37,8 @@ public class EventPublicController {
             @DateTimeFormat(pattern = HitDto.DATE_FORMAT_PATTERN) LocalDateTime rangeEnd,
             @RequestParam(name = "onlyAvailable", required = false) Boolean onlyAvailable,
             @RequestParam(name = "sort", required = false) EventSortTypes sortType,
-            @RequestParam(name = "from", defaultValue = "0") int from,
-            @RequestParam(name = "size", defaultValue = "10") int size,
+            @RequestParam(name = "from", defaultValue = "0") Integer from,
+            @RequestParam(name = "size", defaultValue = "10") Integer size,
             HttpServletRequest request) {
         log.info("""
                         GET events by filters, text={}, categories={}, paid={},

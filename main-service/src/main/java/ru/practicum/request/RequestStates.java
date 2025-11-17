@@ -6,3 +6,9 @@ public enum RequestStates {
     CANCELED,
     REJECTED
 }
+/*
+PENDING, рассматриваемый,
+CONFIRMED,подтвержденный,
+CANCELED, отмененный,
+REJECTED, отклоненный
+ */

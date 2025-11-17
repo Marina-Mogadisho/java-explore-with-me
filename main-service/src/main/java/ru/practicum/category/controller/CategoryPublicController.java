@@ -22,8 +22,8 @@ public class CategoryPublicController {
 
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
-    public List<CategoryDto> getCategories(@RequestParam(name = "from", defaultValue = "0") int from,
-                                           @RequestParam(name = "size", defaultValue = "10") int size,
+    public List<CategoryDto> getCategories(@RequestParam(name = "from", defaultValue = "0") Integer from,
+                                           @RequestParam(name = "size", defaultValue = "10") Integer size,
                                            HttpServletRequest request) {
         log.info("GET categories from={}, size={}", from, size);
         statsLogger.logIPAndPath(request);

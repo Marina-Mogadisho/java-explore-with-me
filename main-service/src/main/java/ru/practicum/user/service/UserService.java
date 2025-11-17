@@ -8,9 +8,9 @@ public interface UserService {
 
     UserDto createUser(UserDto userDto);
 
-    List<UserDto> getUsersByIds(List<Long> ids, int from, int size);
+    List<UserDto> getUsersByIds(List<Long> ids, Integer from, Integer size);
 
-    List<UserDto> getUsers(int from, int size);
+    List<UserDto> getUsers(Integer from, Integer size);
 
     void deleteUserById(Long userId);
 

@@ -22,8 +22,8 @@ public interface CategoryRepository extends JpaRepository<Category, Long> {
             from categories as c
             order by c.id offset :from limit :size
             """, nativeQuery = true)
-    List<Category> findCategories(@Param("from") int from,
-                                  @Param("size") int size);
+    List<Category> findCategories(@Param("from") Integer from,
+                                  @Param("size") Integer size);
 
     default Category getExistingCategory(Long categoryId) {
         Optional<Category> optCategory = findById(categoryId);

@@ -17,7 +17,7 @@ import java.util.Set;
 @Entity
 @Table(name = "compilations")
 @NoArgsConstructor
-public class Compilation {
+public class Compilation {   // Подборки событий
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)

@@ -24,8 +24,8 @@ public interface EventRepository extends JpaRepository<Event, Long>, EventReposi
             order by e.id offset :from limit :size
             """, nativeQuery = true)
     List<Event> findByInitiatorIdOrderByIdAsc(@Param("userId") Long id,
-                                              @Param("from") int from,
-                                              @Param("size") int size);
+                                              @Param("from") Integer from,
+                                              @Param("size") Integer size);
 
     default Event getExistingEvent(Long eventId) {
         Optional<Event> optEvent = findById(eventId);

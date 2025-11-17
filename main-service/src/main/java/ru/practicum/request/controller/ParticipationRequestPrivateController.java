@@ -22,7 +22,8 @@ public class ParticipationRequestPrivateController {
 
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
-    public List<ParticipationRequestDto> getUserRequests(@PathVariable("userId") Long userId, HttpServletRequest request) {
+    public List<ParticipationRequestDto> getUserRequests(@PathVariable("userId") Long userId,
+                                                         HttpServletRequest request) {
         log.info("GET user requests , userId={}", userId);
         statsLogger.logIPAndPath(request);
         return requestService.getUserRequests(userId);

@@ -58,7 +58,7 @@ public class CategoryServiceImpl implements CategoryService {
     }
 
     @Override
-    public List<CategoryDto> getCategories(int from, int size) {
+    public List<CategoryDto> getCategories(Integer from, Integer size) {
         return mapper.toCategoryDtoList(categoryRepository.findCategories(from, size));
     }
 

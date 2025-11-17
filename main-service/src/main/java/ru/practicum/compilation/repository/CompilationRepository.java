@@ -14,11 +14,11 @@ import java.util.Optional;
 public interface CompilationRepository extends JpaRepository<Compilation, Long> {
 
     @Query("select c from Compilation c order by c.id offset :from FETCH FIRST :size ROWS ONLY")
-    List<Compilation> findByOrderByIdAsc(@Param("from") int from, @Param("size") int size);
+    List<Compilation> findByOrderByIdAsc(@Param("from") Integer from, @Param("size") Integer size);
 
     @Query("select c from Compilation c where c.pinned=:pinned order by c.id offset :from FETCH FIRST :size ROWS ONLY")
-    List<Compilation> findByPinnedOrderByIdAsc(@Param("pinned") boolean pinned, @Param("from") int from,
-                                               @Param("size") int size);
+    List<Compilation> findByPinnedOrderByIdAsc(@Param("pinned") boolean pinned, @Param("from") Integer from,
+                                               @Param("size") Integer size);
 
     boolean existsByTitleIgnoreCase(String title);
 
