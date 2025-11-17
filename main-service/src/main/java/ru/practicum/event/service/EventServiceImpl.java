@@ -82,6 +82,7 @@ public class EventServiceImpl implements EventService {
         }
         return mapper.toEventFullDto(event);
     }
+
     @Override
     public List<EventShortDto> getUserEvents(Long userId, Integer from, Integer size) {
         if (userRepository.existsById(userId)) {
