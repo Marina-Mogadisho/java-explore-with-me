@@ -1,0 +1,50 @@
+package ru.practicum.compilation.controller;
+
+import jakarta.servlet.http.HttpServletRequest;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
+import ru.practicum.compilation.dto.CompilationDto;
+import ru.practicum.compilation.service.CompilationService;
+import ru.practicum.statslogger.StatsLogger;
+
+import java.util.List;
+
+@Slf4j
+@RestController
+@RequestMapping("/compilations")
+@RequiredArgsConstructor
+public class CompilationPublicController { // Публичная подборка
+
+    private final CompilationService service;
+    private final StatsLogger statsLogger;
+
+    /**
+     * @param pinned -искать только закрепленные/не закрепленные подборки
+     * @param from - количество элементов, которые нужно пропустить для формирования текущего набора
+     * @param size - количество элементов в наборе
+     * @param request - запрос
+     * @return - список подборок в соответствии с условиями
+     */
+    @GetMapping
+    @ResponseStatus(HttpStatus.OK)
+    public List<CompilationDto> getCompilations(@RequestParam(name = "pinned", required = false) Boolean pinned,
+                                                @RequestParam(name = "from", defaultValue = "0") Integer from,
+                                                @RequestParam(name = "size", defaultValue = "10") Integer size,
+                                                HttpServletRequest request) {
+        log.info("GET compilations pinned={}, from={}, size={}", pinned, from, size);
+        statsLogger.logIPAndPath(request);
+        return service.getCompilations(pinned, from, size);
+    }
+
+    @GetMapping("/{compId}")
+    @ResponseStatus(HttpStatus.OK)
+    public CompilationDto getCompilation(@PathVariable(name = "compId") Long compId, HttpServletRequest request) {
+        log.info("GET compilation by id={}", compId);
+        statsLogger.logIPAndPath(request);
+        return service.getCompilation(compId);
+    }
+
+}
+
